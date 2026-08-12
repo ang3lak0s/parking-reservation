@@ -104,8 +104,6 @@ public class ReservationService {
                 ));
 
         reservation.cancel();
-
-        reservationRepository.save(reservation);
     }
 
     private void validateTimeRange(
