@@ -102,13 +102,14 @@ Döntés eredménye:
 A rendszer jelenlegi állapotában Docker Compose segítségével egyetlen paranccsal indítható.
 
 3. A fontosabb döntések összefoglalása
-   Döntés	Választott megoldás	Fő szempont
-   Backend technológia	Spring Boot	Egyszerű REST és réteges felépítés
-   Adatbázis	PostgreSQL	Relációs adatmodell és integritás
-   Migráció	Flyway	Reprodukálható adatbázis-inicializálás
-   Ütközésvizsgálat	Repository lekérdezés	Célzott adatbázis-művelet
-   Lemondás	CANCELLED állapot	Adatok megőrzése
-   Futtatási környezet	Docker Compose	Egyszerű és reprodukálható indítás
+
+   Döntés	               Választott megoldás	          Fő szempont
+   Backend technológia	     Spring Boot	              Egyszerű REST és réteges felépítés
+   Adatbázis	              PostgreSQL	              Relációs adatmodell és integritás
+   Migráció	                  Flyway	                  Reprodukálható adatbázis-inicializálás
+   Ütközésvizsgálat	       Repository lekérdezés	      Célzott adatbázis-művelet
+   Lemondás	                  CANCELLED állapot	          Adatok megőrzése
+   Futtatási környezet	      Docker Compose	          Egyszerű és reprodukálható indítás
 
 4. Rövid reflexió
 
