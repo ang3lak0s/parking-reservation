@@ -1,15 +1,35 @@
-  services:
-    postgres:
-      image: postgres:18
-      container_name: parking-reservation-db
-      environment:
-        POSTGRES_DB: parking
-        POSTGRES_USER: parking
-        POSTGRES_PASSWORD: parking
-      ports:
-        - "5432:5432"
-      volumes:
-        - postgres-data:/var/lib/postgresql
+services:
+  postgres:
+    image: postgres:18
+    container_name: parking-reservation-db
+    environment:
+      POSTGRES_DB: parking
+      POSTGRES_USER: parking
+      POSTGRES_PASSWORD: parking
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parking -d parking"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
-  volumes:
-    postgres-data:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: parking-reservation-app
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/parking
+      DB_USERNAME: parking
+      DB_PASSWORD: parking
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
