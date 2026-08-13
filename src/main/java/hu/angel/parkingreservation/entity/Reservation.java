@@ -1,7 +1,7 @@
 package hu.angel.parkingreservation.entity;
 
 import jakarta.persistence.*;
-
+import hu.angel.parkingreservation.exception.ReservationAlreadyCancelledException;
 import java.time.LocalDateTime;
 
 @Entity
@@ -85,7 +85,9 @@ public class Reservation {
 
     public void cancel() {
         if (this.status == ReservationStatus.CANCELLED) {
-            throw new IllegalStateException("Reservation is already cancelled.");
+            throw new ReservationAlreadyCancelledException(
+                    "Reservation is already cancelled."
+            );
         }
 
         this.status = ReservationStatus.CANCELLED;
